@@ -1,23 +1,23 @@
-import dotenv from "dotenv"
-import connectDB from "./db/index.js"
+import dotenv from "dotenv";
+import connectDB from "./db/index.js";
 dotenv.config({
-    path:"./env"
-})
+  path: "./env",
+});
 
 connectDB()
-
-
-
-
-
-
+  .then(() => {
+    app.listen(process.env.PORT || 8000, () => {
+      console.log(`App is listening at port : ${process.env.PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.log(`Mongo Db Connection error: ${err}`);
+  });
 
 // // databese connection first approach
 // import mongoose from "mongoose"
 // import express from "express"
 // import { DB_NAME } from "./constants.js";
-
-
 
 // const app=express()
 // ;(async ()=>{
@@ -32,9 +32,8 @@ connectDB()
 //         console.log(`App is listening at port : ${process.env.PORT}`)
 //       })
 //     }
-    // catch(err){
-    //     console.log("Mongo Db Connection failed",err)
-    //     throw err
-    // }
+// catch(err){
+//     console.log("Mongo Db Connection failed",err)
+//     throw err
+// }
 // })()
-
